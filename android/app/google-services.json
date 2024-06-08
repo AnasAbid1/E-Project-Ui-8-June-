@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676380748472",
+    "project_id": "citymap-122b1",
+    "storage_bucket": "citymap-122b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676380748472:android:3759d2ddeab528685ae24d",
+        "android_client_info": {
+          "package_name": "com.example.eproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq9SxVHaeu7Lo1bHnoVo_z4jcqVMkiUx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
