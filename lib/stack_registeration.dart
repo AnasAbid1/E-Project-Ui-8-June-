@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+import 'login_screen.dart';
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
@@ -180,7 +183,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       SizedBox(height: 25,),
 
                       ElevatedButton(
-                        onPressed: _Reg,
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+                          _Reg();
+                        },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(horizontal: 120, vertical: 18),
                           primary: Colors.white,

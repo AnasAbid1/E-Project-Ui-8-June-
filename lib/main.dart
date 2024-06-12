@@ -18,7 +18,7 @@ import 'lhr_screen.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
+      options: DefaultFirebaseOptions.currentPlatform
   );
   runApp(const MyApp());
 }
@@ -28,28 +28,59 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AttractionDetailScreen()
+      home: BTOM(),
     );
-
   }
 }
-class Splash_Screen extends StatefulWidget {
-  const Splash_Screen({super.key});
+int currentIndex = 0;
 
-  @override
-  State<Splash_Screen> createState() => _Splash_ScreenState();
+void pageShifter(index) {
+  setState(() {
+    currentIndex = index;
+  });
 }
 
-class _Splash_ScreenState extends State<Splash_Screen> {
+void setState(Null Function() param0) {
+}
+
+List<Widget> myScreens = [
+  HomeScreen(),
+  CitySelection(),
+  AttractionList(),
+  RegisterPage(),
+
+];
+
+
+class BTOM extends StatefulWidget {
+
+  const BTOM({super.key});
+
+  @override
+  State<BTOM> createState() => _BTOMState();
+}
+
+class _BTOMState extends State<BTOM> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Spash Screen"),
+      body: myScreens[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
+          currentIndex: currentIndex,
+          onTap: pageShifter,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.location_on_outlined),label: "location"),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite),label: "favorite"),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: "Profile"),
+          ]
       ),
     );
   }
 }
-

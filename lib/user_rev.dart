@@ -30,7 +30,7 @@ class _AttractionDetailScreenState extends State<AttractionDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Attraction Detail'),
+        title: Text('User Feedback'),
       ),
       body: ListView.builder(
         itemCount: _reviews.length,
@@ -42,30 +42,54 @@ class _AttractionDetailScreenState extends State<AttractionDetailScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          _reviews[index].username,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.thumb_up),
-                              onPressed: () {
-                                setState(() {
-                                  _reviews[index].likes++;
-                                });
-                              },
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors:  [Colors.brown.shade300, Colors.brown.shade700],
+
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0), // Optional: For rounded corners
                             ),
-                            Text('${_reviews[index].likes}'),
-                          ],
+                            padding: EdgeInsets.all(8.0), // Adjust padding as needed
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  _reviews[index].username,
+                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(Icons.thumb_up, color: Colors.white),
+                                      onPressed: () {
+                                        setState(() {
+                                          _reviews[index].likes++;
+                                        });
+                                      },
+                                    ),
+                                    Text(
+                                      '${_reviews[index].likes}',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
+
                     SizedBox(height: 8),
                     Row(
                       children: [
@@ -82,12 +106,26 @@ class _AttractionDetailScreenState extends State<AttractionDetailScreen> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showReviewDialog(context);
-        },
-        child: Icon(Icons.add),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.brown.shade300, Colors.brown.shade700],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        width: 56.0,
+        height: 56.0,
+        child: RawMaterialButton(
+          onPressed: () {
+            _showReviewDialog(context);
+          },
+          child: Container(
+            child: Icon(Icons.add, color: Colors.white),
+          ),
+        ),
       ),
+
     );
   }
 

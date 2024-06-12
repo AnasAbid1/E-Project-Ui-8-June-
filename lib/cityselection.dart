@@ -18,6 +18,14 @@ class _CitySelectionState extends State<CitySelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15,vertical: 15),

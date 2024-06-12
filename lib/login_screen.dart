@@ -1,3 +1,4 @@
+import 'package:eproject/home.dart';
 import 'package:eproject/stack_registeration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -118,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       ElevatedButton(
                         onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()),);
                           login();
                         },
                         style: ElevatedButton.styleFrom(
