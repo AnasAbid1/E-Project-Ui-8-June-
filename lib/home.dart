@@ -7,9 +7,7 @@ import 'package:eproject/user_rev.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'isl_screen.dart';
-import 'lhr_screen.dart';
-import 'mltn_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -42,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     bool hasSeenPopup = prefs.getBool('hasSeenPopup') ?? false;
 
     if (!hasSeenPopup) {
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 4));
       _showPopup(context, 'Welcome to our website!', 'You have pressed the Login n Register');
       prefs.setBool('hasSeenPopup', true);
     }
@@ -79,11 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Colors.orange,
-                    Colors.deepOrange,
-                    Colors.orangeAccent,
-                  ],
+                  colors: [Colors.brown.shade300, Colors.brown.shade700],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -108,11 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
               margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Colors.orange,
-                    Colors.deepOrange,
-                    Colors.orangeAccent,
-                  ],
+                  colors: [Colors.brown.shade300, Colors.brown.shade700],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),

@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import 'home.dart';
 import 'login_screen.dart';
@@ -12,39 +15,27 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   
-  bool isHide= true;
+
 
   final TextEditingController _username = TextEditingController();
   final TextEditingController _email = TextEditingController();
+
   final TextEditingController _pass = TextEditingController();
-  final TextEditingController _Age = TextEditingController();
-  final TextEditingController _gender = TextEditingController();
-
-  void _Reg() {
-    final String username = _username.text;
-    final String email = _email.text;
-    final String password = _pass.text;
 
 
-    print('Username: $username');
-    print('Email: $email');
-    print('Password: $password');
-  }
+
+  bool isHide= true;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-        backgroundColor:  Colors.grey.withOpacity(0.2),
         title: Center(child: const Text("Registeration Screen")),
       ),
-
-      backgroundColor:  Colors.grey.withOpacity(0.5),
-
       body: Stack(
 
         children: [
-
 
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
@@ -88,33 +79,35 @@ class _RegisterPageState extends State<RegisterPage> {
 
                         decoration: InputDecoration(
                           labelText: 'Username',
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: TextStyle(color: Colors.black),
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                           focusedBorder: UnderlineInputBorder(
 
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: Icon(Icons.person, color: Colors.white),
+                          prefixIcon: Icon(Icons.person, color: Colors.black),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
+
                       SizedBox(height: 10),
+
                       TextField(
                         controller: _email,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: TextStyle(color: Colors.black),
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: Icon(Icons.email, color: Colors.white),
+                          prefixIcon: Icon(Icons.email, color: Colors.black),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                       SizedBox(height: 10),
                       TextField(
@@ -124,68 +117,34 @@ class _RegisterPageState extends State<RegisterPage> {
                         
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: TextStyle(color: Colors.black),
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
+                            borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: const  Icon(Icons.lock, color: Colors.white),
+                          prefixIcon: const  Icon(Icons.lock, color: Colors.black),
                          suffixIcon:   IconButton(onPressed: (){
                            setState((){
                              isHide = ! isHide;
                            });
-                         },icon: isHide == true ? const Icon(Icons.remove_red_eye, color: Colors.white): const Icon(Icons.panorama_fish_eye, color: Colors.white))
+                         },icon: isHide == true ? const Icon(Icons.remove_red_eye, color: Colors.black): const Icon(Icons.panorama_fish_eye, color: Colors.white))
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                       SizedBox(height: 10),
 
 
-                      TextField(
 
-                        controller: _Age,
-                        decoration: InputDecoration(
-                          labelText: 'Age',
-                          labelStyle: TextStyle(color: Colors.white),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
 
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          prefixIcon: Icon(Icons.person, color: Colors.white),
-                        ),
-                        style: TextStyle(color: Colors.white),
-                      ),
 
-                      SizedBox(height: 10),
-                      TextField(
 
-                        controller: _gender,
-                        decoration: InputDecoration(
-                          labelText: 'Gender',
-                          labelStyle: TextStyle(color: Colors.white),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          prefixIcon: Icon(Icons.person, color: Colors.white),
-                        ),
-                        style: TextStyle(color: Colors.white),
-                      ),
 
                       SizedBox(height: 25,),
 
                       ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
-                          _Reg();
+                      onPressed: () {
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(horizontal: 120, vertical: 18),
@@ -199,9 +158,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               color:  Colors.black
                           ),
                         ),
-                        child: Text('Register'),
+                        child: Text('Reg'),
                       ),
-
 
                     ],
                   ),

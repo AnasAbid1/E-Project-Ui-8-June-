@@ -18,25 +18,11 @@ class _LoginPageState extends State<LoginPage> {
   bool isHide = true;
   final  TextEditingController name = TextEditingController();
  final TextEditingController email = TextEditingController();
+
+
   final TextEditingController password = TextEditingController();
 
-  void login()async{
-    var userID = const Uuid().v1();
-    try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: password.text);
-      await FirebaseFirestore.instance.collection("userData").doc(userID).set({
-        "ID": userID,
-        "name": name.text,
-        "email": email.text,
-        "pass": password.text,
 
-      });
-    }
-    catch(e){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
-
-    }
-  }
 
 
 
@@ -119,8 +105,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()),);
-                          login();
+
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(horizontal: 120, vertical: 18),
@@ -136,6 +121,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: Text('Login'),
                       ),
+
+
 
 
                     ],
